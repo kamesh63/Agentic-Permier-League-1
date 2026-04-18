@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FanPulse - Live Sports Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <!-- Top Navigation / Cricbuzz Style -->
+    <nav class="top-nav">
+        <div class="brand">
+            <h1>Fan<span class="pulse-text">Pulse</span></h1>
+        </div>
+        
+        <div class="upcoming-matches-container">
+            <div class="upcoming-matches-track" id="upcoming-matches-track">
+                <!-- Populated via JS -->
+                <div class="upcoming-match-card placeholder">Loading matches...</div>
+            </div>
+        </div>
+
+        <div class="nav-controls">
+            <label class="voice-toggle">
+                <input type="checkbox" id="voice-agent-toggle">
+                <span class="slider"></span>
+                <span class="label-text">🎙️ Live Commentary</span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="layout-container">
+        
+        <!-- Left: Match & Commentary -->
+        <main class="match-content">
+            <!-- Simulated Video Player / Premium Scoreboard -->
+            <div class="video-player-area" id="visualizer-container">
+                <div class="pulse-ring secondary" id="pulse-bg"></div>
+                <div class="pulse-ring" id="pulse-core"></div>
+                
+                <div class="scoreboard-glass">
+                    <div class="match-header">
+                        <div class="team team1">
+                            <div class="team-logo">RCB</div>
+                        </div>
+                        <div class="score-center">
+                            <div class="main-score" id="match-score">0/0</div>
+                            <div class="overs-text" id="match-overs">Overs: 0.0</div>
+                        </div>
+                        <div class="team team2">
+                            <div class="team-logo">DC</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-stats">
+                        <div class="batters">
+                            <div class="stat-line" id="batter1">Batter 1: 0(0)</div>
+                            <div class="stat-line" id="batter2">Batter 2: 0(0)</div>
+                        </div>
+                        <div class="bowler">
+                            <div class="stat-line" id="bowler-info">Bowler: 0-0-0-0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interaction Dock (Floating on top of video) -->
+                <div class="interaction-dock">
+                    <button class="reaction-btn" data-reaction="🔥">🔥</button>
+                    <button class="reaction-btn" data-reaction="😲">😲</button>
+                    <button class="reaction-btn" data-reaction="🤯">🤯</button>
+                    <button class="reaction-btn" data-reaction="🏏">🏏</button>
+                    <button class="reaction-btn" data-reaction="👏">👏</button>
+                </div>
+            </div>
+
+            <!-- Tug of War Progress Bar -->
+            <div class="momentum-section">
+                <div class="momentum-labels">
+                    <span id="momentum-label-rcb">RCB Momentum (50%)</span>
+                    <span id="momentum-label-dc">DC Momentum (50%)</span>
+                </div>
+                <div class="tug-of-war-container">
+                    <div class="tug-of-war-fill-left" id="momentum-bar-left"></div>
+                    <div class="tug-of-war-fill-right" id="momentum-bar-right"></div>
+                </div>
+            </div>
+
+            <!-- Live Text Commentary Feed -->
+            <div class="commentary-section">
+                <h3>Live Commentary</h3>
+                <div class="event-feed" id="event-feed">
+                    <!-- Events populated by JS -->
+                </div>
+            </div>
+        </main>
+        <!-- Right: Chat Sidebar -->
+        <aside class="chat-sidebar" id="chat-window">
+            <div class="chat-header">
+                <h3>💬 Live Fan Chat</h3>
+                <span class="online-count">🟢 1,240 Online</span>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Chat messages will appear here -->
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type a message..." maxlength="100">
+                <button id="chat-send-btn">Send</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Clutch Mode Overlay (Hidden by default) -->
+    <div id="clutch-overlay">
+        <h1 class="clutch-header">Clutch Moment</h1>
+        <h2 class="clutch-question" id="clutch-question">Will Kohli hit a boundary next ball?</h2>
+        <div class="clutch-timer" id="clutch-timer">10.0s</div>
+        <div class="clutch-options">
+            <button class="clutch-btn yes" id="clutch-yes">Yes!</button>
+            <button class="clutch-btn no" id="clutch-no">No</button>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
